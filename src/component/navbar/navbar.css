@@ -1,0 +1,15 @@
+*{
+    margin: 0rem;
+    padding: 0rem;
+}
+.navbar-container{
+    background-color: var(--white-color);
+    padding: 1rem 0rem;
+}
+.mg-lt-2rm{
+    margin-left: 10%;
+    width: fit-content;
+}
+body{
+    background-color: rgba(225, 222, 222, 0.505);
+}
