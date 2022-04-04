@@ -1,0 +1,20 @@
+.aside-container{
+    grid-area: "aside-display";
+    margin-left: 20%;
+    margin-top: 2rem;
+}
+.flex{
+    align-items: center;
+    cursor: pointer;
+    width: 10rem;
+    display: flex;
+}
+.flex span{
+    line-height: 3rem;
+    margin-left: 0.5rem;
+    font-size: larger;
+    
+}
+.txt-decoration-none{
+    text-decoration: none;
+}

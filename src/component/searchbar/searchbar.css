@@ -1,0 +1,23 @@
+.searchbar-text{
+    width: 100%;
+    border: none;
+    padding: 0rem 0.5rem;
+}
+input:focus{
+    outline: none;
+}
+.searchbar-container{
+    display: flex;
+    align-items: center;
+    background-color: var(--white-color);
+    margin: 1rem 0rem;
+    border: 2px solid #dad6d6;
+}
+.filter-button{
+    color: gray;
+    margin: 0.5rem;
+}
+.searchbar-icon{
+    margin: 0.5rem;
+    font-weight: 100;
+}
