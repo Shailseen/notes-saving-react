@@ -1,4 +1,4 @@
-.card-container {
+.notes-card-container {
   width: 25rem;
   background-color: var(--white-color);
   margin: 1rem 0rem;
@@ -72,8 +72,8 @@
     font-weight: bold;
     font-size: larger;
     padding: 0.5rem 0rem;
-    padding-left: 0.5rem;
-    width: 24.5rem;
+    padding-left: 1.4rem;
+    width: 23rem;
     background-color: inherit;
 }
 .font-sm{
@@ -91,4 +91,10 @@
 }
 .box-shadow2{
     box-shadow: 0px 0px 10px 2px var(--primary-color);
+}
+.solid-button:hover{
+  background-color: var(--primary-color);
+}
+.quill{
+  padding-left: 0.5rem;
 }

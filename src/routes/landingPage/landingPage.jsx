@@ -1,5 +1,6 @@
 import "./landingPage.css";
 import poster from "../../assets/undraw_add_notes_re_ln36.svg";
+import { Link } from "react-router-dom";
 export const LandingPage = () => {
   return (
     <div className="grid-container box-shadow">
@@ -21,9 +22,9 @@ export const LandingPage = () => {
           <button className="button-style-none solid-button disable-hover button-style">
             Join Now
           </button>
-          <a className="login-link" href="">
+          <Link to="/login" className="login-link">
             Already have an account?
-          </a>
+          </Link>
         </div>
       </div>
       <div className="image-page-conatiner">

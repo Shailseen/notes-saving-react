@@ -1,0 +1,103 @@
+body {
+  margin: 0rem;
+}
+.main-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 86.13px - 6.8rem);
+}
+.card-container-login {
+  width: 22rem;
+}
+.card-container-login h2 {
+  text-align: center;
+  margin-bottom: 0rem;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 3rem 3rem 3rem;
+}
+.form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.input-text {
+  width: 100%;
+  padding: 0.5rem 0rem;
+  border: none;
+}
+.m-b-1r {
+  margin-bottom: 1rem;
+}
+.input-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  min-width: fit-content;
+  padding: 0rem;
+}
+.login-container .solid-button {
+  background-color: var(--primary-color);
+  width: 100%;
+}
+.form-utils {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-utils:nth-child(2) {
+  justify-content: flex-start;
+  font-size: small;
+}
+#remember {
+  margin: 6px 3px 3px 0px;
+}
+.forgot-pass {
+  color: var(--login-primary-color);
+  text-decoration: none;
+  margin-left: 2.5rem;
+  font-size: small;
+}
+.create-accnt {
+  text-decoration: none;
+  color: var(--black-color);
+}
+.create-accnt-container > i {
+  color: var(--black-color);
+  font-size: 1.5rem;
+  margin-top: 1px;
+}
+.create-accnt-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.login-container .secondary-button {
+  width: 100%;
+}
+.form-utils input {
+  cursor: pointer;
+}
+.form-utils label {
+  cursor: pointer;
+}
+.password-container {
+  display: flex;
+  width: 100%;
+}
+
+.show-hide-pass {
+  padding: 0rem;
+  padding-right: 0.5rem;
+  /* height: 1.4rem; */
+  width: 1.5rem;
+  border: none;
+}
+.wrapper-input {
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-bottom: 1rem;
+}

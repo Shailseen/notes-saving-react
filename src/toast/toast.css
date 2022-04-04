@@ -1,0 +1,40 @@
+.alert-box{
+    position: fixed;
+    text-align: center;
+    right: 20%;
+    left: 20%;
+    bottom: 5%;
+    height: 3rem;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.721);
+}
+.toast-msg{
+  color: var(--white-color);
+}
+#hidden{
+    visibility: hidden;
+}
+#visible{
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }

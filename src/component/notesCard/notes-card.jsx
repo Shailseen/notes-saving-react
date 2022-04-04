@@ -8,13 +8,20 @@ import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
+import { useEffect } from "react";
 let setIcon = true;
 let readOnly = true;
-export const NotesCard = () => {
+export const NotesCard = ({item}) => {
+  const {titleCard,valueCard,colorCard,todayYear,todayMonth,todayDay} = item;
   const [displayStatusToolbaar, setDisplayStatusToolbaar] = useState(false);
   const [displayEditIcon, setDisplayEditIcon] = useState(<EditIcon />);
   const [inputReadOnlyStatus,setInputReadOnlyStatus] = useState(true)
   const [containerBgColor,setContainerBgColor] = useState("color-white")
+  useEffect(()=>{
+    setContainerBgColor(colorCard);
+    setValue(valueCard);
+
+  },[])
   const containerBackgroundColorHandler = (setColor) => {
       setContainerBgColor(setColor);
   }
@@ -53,9 +60,9 @@ export const NotesCard = () => {
   const [value, setValue] = useState("");
   return (
     <>
-      <div className={`card-container ${containerBgColor}`}>
+      <div key={item._id} className={`notes-card-container ${containerBgColor}`}>
         
-            <input disabled={inputReadOnlyStatus} className="title-bar" type="text" placeholder="Title" />
+            <input disabled={inputReadOnlyStatus} className="title-bar" type="text" placeholder="Title" value={titleCard} />
         <ReactQuill
           value={value}
           onChange={setValue}
@@ -65,7 +72,7 @@ export const NotesCard = () => {
           className="quill"
         />
         <div className="low-level-container">
-          <div className="publish-date-container color-secondary font-sm">Created at: 23/03/2000</div>
+          <div className="publish-date-container color-secondary font-sm">Created at: {todayDay}/{todayMonth}/{todayYear}</div>
           <div className="icons-container">
             <span className="color-secondary" onClick={clickHandler}>{displayEditIcon}</span>
             <ColorLensOutlinedIcon className="color-secondary" onClick={colorPickerHandler} />
@@ -91,6 +98,4 @@ export const NotesCard = () => {
     </>
   );
 };
-{
-  /* <EditIcon onClick={clickHandler}/> */
-}
+
