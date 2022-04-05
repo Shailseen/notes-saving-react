@@ -16,7 +16,7 @@ export const NotesCard = ({ item }) => {
   var year = (new Date()).getFullYear();
     var month = (new Date()).getMonth() + 1;
     var day = (new Date()).getDate();
-    const {saveNotesHandler,notesList} = useNotes();
+    const {saveNotesHandler,notesList,deleteNotesHandler} = useNotes();
   const {
     titleCard,
     valueCard,
@@ -29,7 +29,7 @@ export const NotesCard = ({ item }) => {
   const [displayEditIcon, setDisplayEditIcon] = useState(<EditIcon />);
   const [inputReadOnlyStatus, setInputReadOnlyStatus] = useState(true);
   const [containerBgColor, setContainerBgColor] = useState("color-white");
-  const [title, setTitle] = useState({titleCard});
+  const [title, setTitle] = useState(titleCard);
 
   const titleHandler = (eventValue) => {
     setTitle(eventValue);
@@ -158,7 +158,7 @@ export const NotesCard = ({ item }) => {
             
             <LabelOutlinedIcon className="color-secondary" />
             <UnarchiveOutlinedIcon className="color-secondary" />
-            <DeleteOutlinedIcon className="color-secondary" />
+            <DeleteOutlinedIcon className="color-secondary" onClick={() => deleteNotesHandler(item._id)} />
           </div>
         </div>
       </div>

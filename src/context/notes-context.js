@@ -109,9 +109,46 @@ const NotesProvider = ({ children }) => {
       }, 2000);
     } catch (error) {console.log(error)}
   };
+
+  const deleteNotesHandler = async (id) => {
+    try {
+      const response = await axios.delete(`/api/notes/${id}`, {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      setNotesList(response.data.notes);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Deleted Successfully!!`,
+        select: "success-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+    } catch (error) {
+        setToastVal((prevVal) => ({
+            ...prevVal,
+            msg: `Something went error!`,
+            select: "error-alert",
+            isDisplay: "visible",
+          }));
+          setTimeout(() => {
+            setToastVal((prevVal) => ({
+              ...prevVal,
+              isDisplay: "hidden",
+            }));
+          }, 2000);
+    }
+  };
+
   return (
     <NotesContext.Provider
-      value={{ addNotesCardHandler, saveNotesHandler, notesList }}
+      value={{ addNotesCardHandler, saveNotesHandler,deleteNotesHandler, notesList }}
     >
       {children}
     </NotesContext.Provider>
