@@ -9,34 +9,51 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import { useEffect } from "react";
+import { useNotes } from "../../context/notes-context";
 let setIcon = true;
 let readOnly = true;
-export const NotesCard = ({item}) => {
-  const {titleCard,valueCard,colorCard,todayYear,todayMonth,todayDay} = item;
+export const NotesCard = ({ item }) => {
+  var year = (new Date()).getFullYear();
+    var month = (new Date()).getMonth() + 1;
+    var day = (new Date()).getDate();
+    const {saveNotesHandler,notesList} = useNotes();
+  const {
+    titleCard,
+    valueCard,
+    colorCard,
+    todayYear,
+    todayMonth,
+    todayDay,
+  } = item;
   const [displayStatusToolbaar, setDisplayStatusToolbaar] = useState(false);
   const [displayEditIcon, setDisplayEditIcon] = useState(<EditIcon />);
-  const [inputReadOnlyStatus,setInputReadOnlyStatus] = useState(true)
-  const [containerBgColor,setContainerBgColor] = useState("color-white")
-  useEffect(()=>{
+  const [inputReadOnlyStatus, setInputReadOnlyStatus] = useState(true);
+  const [containerBgColor, setContainerBgColor] = useState("color-white");
+  const [title, setTitle] = useState({titleCard});
+  const titleHandler = (eventValue) => {
+    setTitle(eventValue);
+  };
+  useEffect(() => {
     setContainerBgColor(colorCard);
     setValue(valueCard);
-
-  },[])
+  }, []);
   const containerBackgroundColorHandler = (setColor) => {
-      setContainerBgColor(setColor);
-  }
+    setContainerBgColor(setColor);
+  };
   const clickHandler = () => {
     displayStatusToolbaar === false
       ? setDisplayStatusToolbaar(true)
       : setDisplayStatusToolbaar(false);
     setIcon
-      ? setDisplayEditIcon(<SaveIcon />)
+      ? setDisplayEditIcon(<SaveIcon onClick={()=>saveNotesHandler(title, value, containerBgColor,year,month,day,notesList._id)} />)
       : setDisplayEditIcon(<EditIcon />);
     if (setIcon === true) {
       setIcon = false;
     } else setIcon = true;
-    readOnly === true ? (readOnly=false) : (readOnly=true);
-    inputReadOnlyStatus === true ? setInputReadOnlyStatus(false) : setInputReadOnlyStatus(true)
+    readOnly === true ? (readOnly = false) : (readOnly = true);
+    inputReadOnlyStatus === true
+      ? setInputReadOnlyStatus(false)
+      : setInputReadOnlyStatus(true);
   };
   const [statusColorPicker, setStatusColorPicker] = useState(
     "hide-color-picker"
@@ -60,9 +77,18 @@ export const NotesCard = ({item}) => {
   const [value, setValue] = useState("");
   return (
     <>
-      <div key={item._id} className={`notes-card-container ${containerBgColor}`}>
-        
-            <input disabled={inputReadOnlyStatus} className="title-bar" type="text" placeholder="Title" value={titleCard} />
+      <div
+        key={item._id}
+        className={`notes-card-container ${containerBgColor}`}
+      >
+        <input
+          disabled={inputReadOnlyStatus}
+          className="title-bar"
+          type="text"
+          placeholder="Title"
+          value={titleCard}
+          onChange={(e) => titleHandler(e.target.value)}
+        />
         <ReactQuill
           value={value}
           onChange={setValue}
@@ -72,30 +98,63 @@ export const NotesCard = ({item}) => {
           className="quill"
         />
         <div className="low-level-container">
-          <div className="publish-date-container color-secondary font-sm">Created at: {todayDay}/{todayMonth}/{todayYear}</div>
+          <div className="publish-date-container color-secondary font-sm">
+            Created at: {todayDay}/{todayMonth}/{todayYear}
+          </div>
           <div className="icons-container">
-            <span className="color-secondary" onClick={clickHandler}>{displayEditIcon}</span>
-            <ColorLensOutlinedIcon className="color-secondary" onClick={colorPickerHandler} />
+            <span className="color-secondary" onClick={clickHandler}>
+              {displayEditIcon}
+            </span>
+            <ColorLensOutlinedIcon
+              className="color-secondary"
+              onClick={colorPickerHandler}
+            />
             <LabelOutlinedIcon className="color-secondary" />
-            <UnarchiveOutlinedIcon className="color-secondary"/>
+            <UnarchiveOutlinedIcon className="color-secondary" />
             <DeleteOutlinedIcon className="color-secondary" />
           </div>
         </div>
       </div>
+      <div
+        className={`color-picker-container box-shadow2 ${statusColorPicker}`}
+      >
         <div
-          className={`color-picker-container box-shadow2 ${statusColorPicker}`}
-        >
-          <div onClick={() => containerBackgroundColorHandler("color-yellow")} className="round-colors color-yellow"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-green")} className="round-colors color-green"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-orange")} className="round-colors color-orange"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-aqua")} className="round-colors color-aqua"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-skyblue")} className="round-colors color-skyblue"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-greenYellow")} className="round-colors color-greenYellow"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-violet")} className="round-colors color-violet"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-white")} className="round-colors color-white"></div>
-          <div onClick={() => containerBackgroundColorHandler("color-pink")} className="round-colors color-pink"></div>
-        </div>
+          onClick={() => containerBackgroundColorHandler("color-yellow")}
+          className="round-colors color-yellow"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-green")}
+          className="round-colors color-green"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-orange")}
+          className="round-colors color-orange"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-aqua")}
+          className="round-colors color-aqua"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-skyblue")}
+          className="round-colors color-skyblue"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-greenYellow")}
+          className="round-colors color-greenYellow"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-violet")}
+          className="round-colors color-violet"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-white")}
+          className="round-colors color-white"
+        ></div>
+        <div
+          onClick={() => containerBackgroundColorHandler("color-pink")}
+          className="round-colors color-pink"
+        ></div>
+      </div>
     </>
   );
 };
-
