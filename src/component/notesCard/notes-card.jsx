@@ -30,16 +30,20 @@ export const NotesCard = ({ item }) => {
   const [inputReadOnlyStatus, setInputReadOnlyStatus] = useState(true);
   const [containerBgColor, setContainerBgColor] = useState("color-white");
   const [title, setTitle] = useState({titleCard});
+
   const titleHandler = (eventValue) => {
     setTitle(eventValue);
   };
+
   useEffect(() => {
     setContainerBgColor(colorCard);
     setValue(valueCard);
   }, []);
+
   const containerBackgroundColorHandler = (setColor) => {
     setContainerBgColor(setColor);
   };
+
   const clickHandler = () => {
     colorPickerHandler()
     displayStatusToolbaar === false
@@ -56,14 +60,17 @@ export const NotesCard = ({ item }) => {
       ? setInputReadOnlyStatus(false)
       : setInputReadOnlyStatus(true);
   };
+
   const [statusColorPicker, setStatusColorPicker] = useState(
     "hide-color-picker"
   );
+
   const colorPickerHandler = () => {
     statusColorPicker === "show-color-picker"
       ? setStatusColorPicker("hide-color-picker")
       : setStatusColorPicker("show-color-picker");
   };
+
   const defaultmodule = {
     toolbar: [
       ["bold", "italic", "underline"],
@@ -72,9 +79,11 @@ export const NotesCard = ({ item }) => {
       ["", "", "clean"],
     ],
   };
+
   const modules = {
     toolbar: false,
   };
+
   const [value, setValue] = useState("");
   return (
     <>
@@ -87,7 +96,7 @@ export const NotesCard = ({ item }) => {
           className="title-bar"
           type="text"
           placeholder="Title"
-          value={titleCard}
+          value={title}
           onChange={(e) => titleHandler(e.target.value)}
         />
         <ReactQuill
