@@ -41,6 +41,7 @@ export const NotesCard = ({ item }) => {
     setContainerBgColor(setColor);
   };
   const clickHandler = () => {
+    colorPickerHandler()
     displayStatusToolbaar === false
       ? setDisplayStatusToolbaar(true)
       : setDisplayStatusToolbaar(false);
@@ -97,26 +98,8 @@ export const NotesCard = ({ item }) => {
           placeholder="enter your notes here..."
           className="quill"
         />
-        <div className="low-level-container">
-          <div className="publish-date-container color-secondary font-sm">
-            Created at: {todayDay}/{todayMonth}/{todayYear}
-          </div>
-          <div className="icons-container">
-            <span className="color-secondary" onClick={clickHandler}>
-              {displayEditIcon}
-            </span>
-            <ColorLensOutlinedIcon
-              className="color-secondary"
-              onClick={colorPickerHandler}
-            />
-            <LabelOutlinedIcon className="color-secondary" />
-            <UnarchiveOutlinedIcon className="color-secondary" />
-            <DeleteOutlinedIcon className="color-secondary" />
-          </div>
-        </div>
-      </div>
-      <div
-        className={`color-picker-container box-shadow2 ${statusColorPicker}`}
+        <div
+        className={`color-picker-container ${statusColorPicker}`}
       >
         <div
           onClick={() => containerBackgroundColorHandler("color-yellow")}
@@ -147,13 +130,28 @@ export const NotesCard = ({ item }) => {
           className="round-colors color-violet"
         ></div>
         <div
-          onClick={() => containerBackgroundColorHandler("color-white")}
-          className="round-colors color-white"
+          onClick={() => containerBackgroundColorHandler("color-grey")}
+          className="round-colors color-grey"
         ></div>
         <div
           onClick={() => containerBackgroundColorHandler("color-pink")}
           className="round-colors color-pink"
         ></div>
+      </div>
+        <div className="low-level-container">
+          <div className="publish-date-container color-secondary font-sm">
+            Created at: {todayDay}/{todayMonth}/{todayYear}
+          </div>
+          <div className="icons-container">
+            <span className="color-secondary" onClick={clickHandler}>
+              {displayEditIcon}
+            </span>
+            
+            <LabelOutlinedIcon className="color-secondary" />
+            <UnarchiveOutlinedIcon className="color-secondary" />
+            <DeleteOutlinedIcon className="color-secondary" />
+          </div>
+        </div>
       </div>
     </>
   );

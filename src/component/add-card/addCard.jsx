@@ -66,28 +66,8 @@ const AddCard = () => {
           placeholder="enter your notes here..."
           className="quill"
         />
-        <div className="low-level-container">
-          <div></div>
-          <div className="icons-container">
-            <ColorLensOutlinedIcon
-              className="color-secondary"
-              onClick={colorPickerHandler}
-            />
-            <LabelOutlinedIcon className="color-secondary" />
-            <button
-              onClick={() => {
-                addNotesCardHandler(title, value, containerBgColor,year,month,day);
-                resetCardDataHandler()
-              }}
-              className="button-style-none solid-button"
-            >
-              Add Card
-            </button>
-          </div>
-        </div>
-      </div>
-      <div
-        className={`color-picker-container box-shadow2 ${statusColorPicker}`}
+        <div
+        className={`color-picker-container`}
       >
         <div
           onClick={() => containerBackgroundColorHandler("color-yellow")}
@@ -118,14 +98,30 @@ const AddCard = () => {
           className="round-colors color-violet"
         ></div>
         <div
-          onClick={() => containerBackgroundColorHandler("color-white")}
-          className="round-colors color-white"
+          onClick={() => containerBackgroundColorHandler("color-grey")}
+          className="round-colors color-grey"
         ></div>
         <div
           onClick={() => containerBackgroundColorHandler("color-pink")}
           className="round-colors color-pink"
         ></div>
       </div>
+        <div className="low-level-container">
+          <div></div>
+          <div className="icons-container">
+            <button
+              onClick={() => {
+                addNotesCardHandler(title, value, containerBgColor,year,month,day);
+                resetCardDataHandler()
+              }}
+              className="button-style-none solid-button button-style-set"
+            >
+              Add Card
+            </button>
+          </div>
+        </div>
+      </div>
+      
     </>
   );
 };
