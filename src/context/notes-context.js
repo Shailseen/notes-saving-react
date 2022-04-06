@@ -111,7 +111,18 @@ const NotesProvider = ({ children }) => {
         }));
       }, 2000);
     } catch (error) {
-      console.log(error);
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Notes update Failed!!`,
+        select: "error-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
     }
   };
 
