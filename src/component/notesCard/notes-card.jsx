@@ -9,14 +9,15 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import { useEffect } from "react";
+import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import { useNotes } from "../../context/notes-context";
 let setIcon = true;
 let readOnly = true;
-export const NotesCard = ({ item }) => {
+export const NotesCard = ({ item,isArchive }) => {
   var year = (new Date()).getFullYear();
     var month = (new Date()).getMonth() + 1;
     var day = (new Date()).getDate();
-    const {saveNotesHandler,notesList,deleteNotesHandler} = useNotes();
+    const {saveNotesHandler,notesList,deleteNotesHandler,addNotesToArchiveHandler,removeNotesToArchiveHandler,deleteNoteFromArchivesHandler} = useNotes();
   const {
     titleCard,
     valueCard,
@@ -157,8 +158,8 @@ export const NotesCard = ({ item }) => {
             </span>
             
             <LabelOutlinedIcon className="color-secondary" />
-            <UnarchiveOutlinedIcon className="color-secondary" />
-            <DeleteOutlinedIcon className="color-secondary" onClick={() => deleteNotesHandler(item._id)} />
+            {isArchive === true ? <UnarchiveOutlinedIcon className="color-secondary" onClick={()=>removeNotesToArchiveHandler(item._id)}/> : <ArchiveOutlinedIcon className="color-secondary" onClick={()=>addNotesToArchiveHandler(title, value, containerBgColor,year,month,day,item._id)}/> }
+            {isArchive === true ? <DeleteOutlinedIcon className="color-secondary" onClick={() => deleteNoteFromArchivesHandler(item._id)} /> : <DeleteOutlinedIcon className="color-secondary" onClick={() => deleteNotesHandler(item._id)} />}
           </div>
         </div>
       </div>

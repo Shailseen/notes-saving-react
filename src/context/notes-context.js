@@ -9,6 +9,7 @@ const useNotes = () => useContext(NotesContext);
 const NotesProvider = ({ children }) => {
   const { toastVal, setToastVal } = useToast();
   const [notesList, setNotesList] = useState([]);
+  const [archiveList, setArchiveList] = useState([]);
   const encodedToken = localStorage.getItem("token");
   const addNotesCardHandler = async (
     title,
@@ -107,7 +108,9 @@ const NotesProvider = ({ children }) => {
           isDisplay: "hidden",
         }));
       }, 2000);
-    } catch (error) {console.log(error)}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteNotesHandler = async (id) => {
@@ -131,24 +134,173 @@ const NotesProvider = ({ children }) => {
         }));
       }, 2000);
     } catch (error) {
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Something went error!`,
+        select: "error-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
         setToastVal((prevVal) => ({
-            ...prevVal,
-            msg: `Something went error!`,
-            select: "error-alert",
-            isDisplay: "visible",
-          }));
-          setTimeout(() => {
-            setToastVal((prevVal) => ({
-              ...prevVal,
-              isDisplay: "hidden",
-            }));
-          }, 2000);
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+    }
+  };
+
+  const addNotesToArchiveHandler = async (
+    title,
+    value,
+    containerBgColor,
+    year,
+    month,
+    day,
+    _id
+  ) => {
+    console.log(_id);
+    try {
+      const response = await axios.post(
+        `/api/notes/archives/${_id}`,
+        {
+          note: {
+            titleCard: title,
+            valueCard: value,
+            colorCard: containerBgColor,
+            todayYear: year,
+            todayMonth: month,
+            todayDay: day,
+          },
+        },
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Notes archived Successfully!!`,
+        select: "success-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+      setNotesList(response.data.notes);
+      setArchiveList(response.data.archives);
+    } catch (error) {
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Failed to archive Your notes card!!! Please try again.`,
+        select: "error-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+    }
+  };
+
+  const removeNotesToArchiveHandler = async (_id) => {
+    try {
+      const response = await axios.post(
+        `/api/archives/restore/${_id}`,
+        {},
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Notes Un-archived Successfully!!`,
+        select: "success-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+      setNotesList(response.data.notes);
+      setArchiveList(response.data.archives);
+    } catch (error) {
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Failed to unarchive your notes card!!! Please try again.`,
+        select: "error-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+    }
+  };
+
+  const deleteNoteFromArchivesHandler = async (_id) => {
+    try {
+      const response = await axios.delete(
+        `/api/archives/delete/${_id}`,
+        {
+          headers: {
+            authorization: encodedToken,
+          },
+        }
+      );
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Delete Notes from Un-archived Successfully!!`,
+        select: "success-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+      setNotesList(response.data.notes);
+      setArchiveList(response.data.archives);
+    } catch (error) {
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Failed to delete unarchive your notes card!!! Please try again.`,
+        select: "error-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
     }
   };
 
   return (
     <NotesContext.Provider
-      value={{ addNotesCardHandler, saveNotesHandler,deleteNotesHandler, notesList }}
+      value={{
+        addNotesCardHandler,
+        saveNotesHandler,
+        deleteNotesHandler,
+        addNotesToArchiveHandler,
+        removeNotesToArchiveHandler,
+        deleteNoteFromArchivesHandler,
+        notesList,
+        archiveList,
+      }}
     >
       {children}
     </NotesContext.Provider>
