@@ -6,7 +6,6 @@ import "./notes-page.css";
 
 export const NotesPage = () => {
   const { notesList,archiveList } = useNotes();
-  console.log(archiveList);
   return (
     <section className="notes-display-container">
       <SearchBar />

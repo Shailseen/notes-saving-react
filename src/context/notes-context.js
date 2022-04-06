@@ -76,6 +76,8 @@ const NotesProvider = ({ children }) => {
     day,
     id
   ) => {
+    console.log(value)
+    console.log(id)
     try {
       const response = await axios.post(
         `/api/notes/${id}`,
