@@ -1,6 +1,5 @@
 .notes-display-container{
     grid-area: "notes-display";
-    /* border: 2px solid yellowgreen; */
     margin-left: auto;
     margin-right: auto;
 }

@@ -10,14 +10,12 @@ function App() {
   return (
     <div className="App">
       <Toast/>
-      {/* <BrowserRouter> */}
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<HomePage/>} />
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/mock" element={<Mockman />} />
         </Routes>
-      {/* </BrowserRouter> */}
     </div>
   );
 }
