@@ -8,18 +8,15 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useNotes } from "../../context/notes-context";
 
 export const NotesCard = ({ item, isArchive }) => {
   const {
     saveNotesHandler,
-    notesList,
     deleteNotesHandler,
     addNotesToArchiveHandler,
     removeNotesToArchiveHandler,
     deleteNoteFromArchivesHandler,
-    removeTagHandler,
   } = useNotes();
 
   const {
@@ -122,13 +119,7 @@ export const NotesCard = ({ item, isArchive }) => {
       color: "color-pink",
     },
   ];
-  // const labelTag = [
-  //   { tagId: 1, tagName: "Office", isCheckd: false },
-  //   { tagId: 2, tagName: "Work", isCheckd: false },
-  //   { tagId: 3, tagName: "Home", isCheckd: false },
-  //   { tagId: 4, tagName: "Market", isCheckd: false },
-  //   { tagId: 5, tagName: "Wish", isCheckd: false },
-  // ];
+  
   return (
     <>
       <div
