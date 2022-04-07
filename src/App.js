@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { HomePage } from "./routes/homePage/homepage";
-import { LandingPage } from "./routes/landingPage/landingPage";
-import { LoginPage } from "./routes/loginPage/loginPage";
+import { HomePage } from "./routes/homePage/HomePage";
+import { LandingPage } from "./routes/landingPage/LandingPage";
+import { LoginPage } from "./routes/loginPage/LoginPage";
 import { Toast } from "./toast/toast";
 import Mockman from "mockman-js";
 import "../node_modules/mockman-js/dist/style.css";
-import { ArchivePage } from "./routes/archivePage/archive-page";
+import { ArchivePage } from "./routes/archivePage/ArchivePage";
 function App() {
   return (
     <div className="App">
