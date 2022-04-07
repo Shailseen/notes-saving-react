@@ -6,8 +6,8 @@ import { useNotes } from "../../context/notes-context";
 
 const AddCard = () => {
   var now = new Date();
-  var dateTime=now.toUTCString();
-  
+  var dateTime=now.toLocaleString();
+
   const { addNotesCardHandler } = useNotes();
 
   const [tags, setTags] = useState([]);
