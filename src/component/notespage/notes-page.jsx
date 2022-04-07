@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useReducer } from "react";
 import { useNotes } from "../../context/notes-context";
 import { AddCard } from "../add-card/addCard";
 import { NotesCard } from "../notesCard/notes-card";
