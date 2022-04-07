@@ -103,3 +103,22 @@
   padding-left: 2rem;
   padding-right: 2rem;
 }
+.label-container{
+  display: flex;
+  gap: 1rem;
+  margin-left: 1.5rem;
+}
+.tag-output-container{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+.tag-output{
+  font-size: large;
+  background-color: antiquewhite;
+  padding: 0rem 0.5rem;
+}
+.cur-pointer{
+  cursor: pointer;
+}

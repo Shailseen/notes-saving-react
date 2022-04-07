@@ -17,7 +17,8 @@ const NotesProvider = ({ children }) => {
     containerBgColor,
     year,
     month,
-    day
+    day,
+    tags,
   ) => {
     try {
       const response = await axios.post(
@@ -30,6 +31,7 @@ const NotesProvider = ({ children }) => {
             todayYear: year,
             todayMonth: month,
             todayDay: day,
+            tagsHave: tags
           },
         },
         {
@@ -302,6 +304,10 @@ const NotesProvider = ({ children }) => {
     }
   };
 
+  const removeTagHandler = () => {
+    
+  }
+
   return (
     <NotesContext.Provider
       value={{
@@ -311,6 +317,7 @@ const NotesProvider = ({ children }) => {
         addNotesToArchiveHandler,
         removeNotesToArchiveHandler,
         deleteNoteFromArchivesHandler,
+        removeTagHandler,
         notesList,
         archiveList,
       }}

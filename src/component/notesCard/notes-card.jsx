@@ -8,8 +8,8 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useNotes } from "../../context/notes-context";
-import { color } from "@mui/system";
 
 export const NotesCard = ({ item, isArchive }) => {
   var year = new Date().getFullYear();
@@ -22,6 +22,7 @@ export const NotesCard = ({ item, isArchive }) => {
     addNotesToArchiveHandler,
     removeNotesToArchiveHandler,
     deleteNoteFromArchivesHandler,
+    removeTagHandler,
   } = useNotes();
 
   const {
@@ -31,6 +32,7 @@ export const NotesCard = ({ item, isArchive }) => {
     todayYear,
     todayMonth,
     todayDay,
+    tagsHave,
   } = item;
 
   const [containerBgColor, setContainerBgColor] = useState(colorCard);
@@ -38,6 +40,10 @@ export const NotesCard = ({ item, isArchive }) => {
   const [title, setTitle] = useState(titleCard);
 
   const [enableEdit, setEnableEdit] = useState(false);
+
+  const [viewTags, setViewTags] = useState(tagsHave);
+
+  console.log(viewTags);
 
   const titleHandler = (eventValue) => {
     setTitle(eventValue);
@@ -124,7 +130,13 @@ export const NotesCard = ({ item, isArchive }) => {
       color: "color-pink",
     },
   ];
-
+  const labelTag = [
+    { tagId: 1, tagName: "Office", isCheckd: false },
+    { tagId: 2, tagName: "Work", isCheckd: false },
+    { tagId: 3, tagName: "Home", isCheckd: false },
+    { tagId: 4, tagName: "Market", isCheckd: false },
+    { tagId: 5, tagName: "Wish", isCheckd: false },
+  ];
   return (
     <>
       <div
@@ -147,6 +159,13 @@ export const NotesCard = ({ item, isArchive }) => {
           placeholder="enter your notes here..."
           className="quill"
         />
+        <div className="tag-output-container">
+          {viewTags.map(({ tagId, tagName }) => (
+            <div className="tag-output" key={tagId}>
+              {tagName}
+            </div>
+          ))}
+        </div>
         <div className={`color-picker-container ${statusColorPicker}`}>
           {colorItems.map(({ id, color }) => (
             <div
@@ -181,22 +200,10 @@ export const NotesCard = ({ item, isArchive }) => {
                 )
               )}
             </span>
-
-            <LabelOutlinedIcon
+            {/* implement later on label icon */}
+            {/* <LabelOutlinedIcon
               className="color-secondary"
-              onClick={() => {
-                saveNotesHandler(
-                  title,
-                  value,
-                  containerBgColor,
-                  year,
-                  month,
-                  day,
-                  notesList._id
-                );
-                console.log(containerBgColor);
-              }}
-            />
+            /> */}
             {isArchive === true ? (
               <UnarchiveOutlinedIcon
                 className="color-secondary"

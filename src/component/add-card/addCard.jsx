@@ -5,10 +5,12 @@ import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
 import { useNotes } from "../../context/notes-context";
 
 const AddCard = () => {
-    var year = (new Date()).getFullYear();
-    var month = (new Date()).getMonth() + 1;
-    var day = (new Date()).getDate();
+  var year = new Date().getFullYear();
+  var month = new Date().getMonth() + 1;
+  var day = new Date().getDate();
   const { addNotesCardHandler } = useNotes();
+
+  const [tags, setTags] = useState([]);
 
   const [containerBgColor, setContainerBgColor] = useState("color-white");
 
@@ -33,21 +35,67 @@ const AddCard = () => {
   };
 
   const resetCardDataHandler = () => {
-      setTitle("")
-      setValue("")
-      setContainerBgColor("color-white")
-  }
+    setTitle("");
+    setValue("");
+    setContainerBgColor("color-white");
+  };
 
   const module = {
     toolbar: [
-        ["bold", "italic", "underline", "strike", "blockquote"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["link", "image"],
-        [{ color: [] }, { background: [] }],
-      ],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ color: [] }, { background: [] }],
+    ],
   };
 
   const [value, setValue] = useState("");
+
+  const colorItems = [
+    {
+      id: 1,
+      color: "color-yellow",
+    },
+    {
+      id: 2,
+      color: "color-green",
+    },
+    {
+      id: 3,
+      color: "color-orange",
+    },
+    {
+      id: 4,
+      color: "color-aqua",
+    },
+    {
+      id: 5,
+      color: "color-skyblue",
+    },
+    {
+      id: 6,
+      color: "color-greenYellow",
+    },
+    {
+      id: 7,
+      color: "color-violet",
+    },
+    {
+      id: 8,
+      color: "color-grey",
+    },
+    {
+      id: 9,
+      color: "color-pink",
+    },
+  ];
+  const labelTag = [
+    { tagId: 1, tagName: "Office", isCheckd: false },
+    { tagId: 2, tagName: "Work", isCheckd: false },
+    { tagId: 3, tagName: "Home", isCheckd: false },
+    { tagId: 4, tagName: "Market", isCheckd: false },
+    { tagId: 5, tagName: "Wish", isCheckd: false },
+  ];
 
   return (
     <>
@@ -66,53 +114,55 @@ const AddCard = () => {
           placeholder="enter your notes here..."
           className="quill"
         />
-        <div
-        className={`color-picker-container`}
-      >
-        <div
-          onClick={() => containerBackgroundColorHandler("color-yellow")}
-          className="round-colors color-yellow"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-green")}
-          className="round-colors color-green"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-orange")}
-          className="round-colors color-orange"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-aqua")}
-          className="round-colors color-aqua"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-skyblue")}
-          className="round-colors color-skyblue"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-greenYellow")}
-          className="round-colors color-greenYellow"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-violet")}
-          className="round-colors color-violet"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-grey")}
-          className="round-colors color-grey"
-        ></div>
-        <div
-          onClick={() => containerBackgroundColorHandler("color-pink")}
-          className="round-colors color-pink"
-        ></div>
-      </div>
+        <div className={`label-container`}>
+          {labelTag.map((item) => (
+            <div>
+              <input
+                onClick={(e) =>
+                  e.target.checked
+                    ? setTags((prev) => [
+                        ...prev,
+                        { ...item, isCheckd: e.target.checked },
+                      ])
+                    : setTags((prev) => [
+                        prev.filter((items) => items.tagId === item.tagId),
+                      ])
+                }
+                className="cur-pointer"
+                type="checkbox"
+                name={item.tagName}
+                id={item.tagName}
+              />
+              <label className="cur-pointer" htmlFor={item.tagName}>
+                {item.tagName}
+              </label>
+            </div>
+          ))}
+        </div>
+        <div className={`color-picker-container`}>
+          {colorItems.map(({ id, color }) => (
+            <div
+              key={id}
+              onClick={() => containerBackgroundColorHandler(color)}
+              className={`round-colors ${color}`}
+            ></div>
+          ))}
+        </div>
         <div className="low-level-container">
           <div></div>
           <div className="icons-container">
             <button
               onClick={() => {
-                addNotesCardHandler(title, value, containerBgColor,year,month,day);
-                resetCardDataHandler()
+                addNotesCardHandler(
+                  title,
+                  value,
+                  containerBgColor,
+                  year,
+                  month,
+                  day,
+                  tags
+                );
+                resetCardDataHandler();
               }}
               className="button-style-none solid-button button-style-set"
             >
@@ -121,7 +171,6 @@ const AddCard = () => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };
