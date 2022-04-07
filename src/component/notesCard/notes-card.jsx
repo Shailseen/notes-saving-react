@@ -2,7 +2,7 @@ import "react-quill/dist/quill.snow.css";
 import "./notes-card.css";
 import ReactQuill from "react-quill";
 import { useState } from "react";
-import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
+
 import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
