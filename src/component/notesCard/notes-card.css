@@ -1,0 +1,124 @@
+.notes-card-container {
+  width: 25rem;
+  background-color: var(--white-color);
+  margin: 1rem 0rem;
+}
+.low-level-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+.icons-container {
+  display: flex;
+  gap: 0.5rem;
+}
+.color-picker-container {
+  display: flex;
+  background-color: inherit;
+  padding: 0.5rem;
+  flex-wrap: wrap;
+  z-index: 2;
+  gap: 0.3rem;
+  justify-content: center;
+}
+.round-colors {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--white-color);
+  cursor: pointer;
+}
+.color-white {
+  background-color: white;
+}
+.color-yellow {
+  background-color: yellow;
+}
+.color-green {
+  background-color: palegreen;
+}
+.color-orange {
+  background-color: orange;
+}
+.color-aqua {
+  background-color: aqua;
+}
+.color-skyblue {
+  background-color: skyblue;
+}
+.color-greenYellow {
+  background-color: greenyellow;
+}
+.color-violet {
+  background-color: violet;
+}
+.color-pink {
+  background-color: pink;
+}
+.color-grey {
+  background-color: grey;
+}
+.color-secondary {
+  cursor: pointer;
+}
+.hide-color-picker {
+  display: none;
+}
+.show-color-picker {
+  display: flex;
+}
+.title-bar {
+  border: none;
+  font-weight: bold;
+  font-size: larger;
+  padding: 0.5rem 0rem;
+  padding-left: 1.4rem;
+  width: 23rem;
+  background-color: inherit;
+}
+.font-sm {
+  font-size: small;
+}
+.publish-date-container {
+  display: flex;
+  align-items: center;
+}
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+  border: none;
+}
+.ql-container {
+  margin: 0rem;
+}
+.box-shadow2 {
+  box-shadow: 0px 0px 10px 2px var(--primary-color);
+}
+.solid-button:hover {
+  background-color: var(--primary-color);
+}
+.quill {
+  padding-left: 0.5rem;
+}
+.button-style-set{
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.label-container{
+  display: flex;
+  gap: 1rem;
+  margin-left: 1.5rem;
+}
+.tag-output-container{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+.tag-output{
+  font-size: large;
+  background-color: antiquewhite;
+  padding: 0rem 0.5rem;
+}
+.cur-pointer{
+  cursor: pointer;
+}

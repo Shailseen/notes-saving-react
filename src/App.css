@@ -1,5 +1,6 @@
 :root{
   --primary-color: #00B0FF;
+  --secondary-text-color: #e1dede81;
 }
 .App {
   text-align: center;
