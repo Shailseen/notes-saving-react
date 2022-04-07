@@ -12,9 +12,6 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useNotes } from "../../context/notes-context";
 
 export const NotesCard = ({ item, isArchive }) => {
-  var year = new Date().getFullYear();
-  var month = new Date().getMonth() + 1;
-  var day = new Date().getDate();
   const {
     saveNotesHandler,
     notesList,
@@ -29,9 +26,7 @@ export const NotesCard = ({ item, isArchive }) => {
     titleCard,
     valueCard,
     colorCard,
-    todayYear,
-    todayMonth,
-    todayDay,
+    todayTime,
     tagsHave,
   } = item;
 
@@ -43,7 +38,6 @@ export const NotesCard = ({ item, isArchive }) => {
 
   const [viewTags, setViewTags] = useState(tagsHave);
 
-  console.log(viewTags);
 
   const titleHandler = (eventValue) => {
     setTitle(eventValue);
@@ -83,9 +77,7 @@ export const NotesCard = ({ item, isArchive }) => {
       title,
       value,
       containerBgColor,
-      year,
-      month,
-      day,
+      todayTime,
       item._id
     );
   }
@@ -130,13 +122,13 @@ export const NotesCard = ({ item, isArchive }) => {
       color: "color-pink",
     },
   ];
-  const labelTag = [
-    { tagId: 1, tagName: "Office", isCheckd: false },
-    { tagId: 2, tagName: "Work", isCheckd: false },
-    { tagId: 3, tagName: "Home", isCheckd: false },
-    { tagId: 4, tagName: "Market", isCheckd: false },
-    { tagId: 5, tagName: "Wish", isCheckd: false },
-  ];
+  // const labelTag = [
+  //   { tagId: 1, tagName: "Office", isCheckd: false },
+  //   { tagId: 2, tagName: "Work", isCheckd: false },
+  //   { tagId: 3, tagName: "Home", isCheckd: false },
+  //   { tagId: 4, tagName: "Market", isCheckd: false },
+  //   { tagId: 5, tagName: "Wish", isCheckd: false },
+  // ];
   return (
     <>
       <div
@@ -177,7 +169,7 @@ export const NotesCard = ({ item, isArchive }) => {
         </div>
         <div className="low-level-container">
           <div className="publish-date-container color-secondary font-sm">
-            Created at: {todayDay}/{todayMonth}/{todayYear}
+            Created at: {todayTime}
           </div>
           <div className="icons-container">
             <span className="color-secondary">
@@ -217,9 +209,6 @@ export const NotesCard = ({ item, isArchive }) => {
                     title,
                     value,
                     containerBgColor,
-                    year,
-                    month,
-                    day,
                     item._id
                   )
                 }

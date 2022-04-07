@@ -5,9 +5,9 @@ import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
 import { useNotes } from "../../context/notes-context";
 
 const AddCard = () => {
-  var year = new Date().getFullYear();
-  var month = new Date().getMonth() + 1;
-  var day = new Date().getDate();
+  var now = new Date();
+  var dateTime=now.toUTCString();
+  
   const { addNotesCardHandler } = useNotes();
 
   const [tags, setTags] = useState([]);
@@ -157,9 +157,7 @@ const AddCard = () => {
                   title,
                   value,
                   containerBgColor,
-                  year,
-                  month,
-                  day,
+                  dateTime,
                   tags
                 );
                 resetCardDataHandler();

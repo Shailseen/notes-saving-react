@@ -15,9 +15,7 @@ const NotesProvider = ({ children }) => {
     title,
     value,
     containerBgColor,
-    year,
-    month,
-    day,
+    dateTime,
     tags,
   ) => {
     try {
@@ -28,9 +26,7 @@ const NotesProvider = ({ children }) => {
             titleCard: title,
             valueCard: value,
             colorCard: containerBgColor,
-            todayYear: year,
-            todayMonth: month,
-            todayDay: day,
+            todayTime: dateTime,
             tagsHave: tags
           },
         },
@@ -73,9 +69,7 @@ const NotesProvider = ({ children }) => {
     title,
     value,
     containerBgColor,
-    year,
-    month,
-    day,
+    dateTime,
     id
   ) => {
     console.log(value)
@@ -88,9 +82,7 @@ const NotesProvider = ({ children }) => {
             titleCard: title,
             valueCard: value,
             colorCard: containerBgColor,
-            todayYear: year,
-            todayMonth: month,
-            todayDay: day,
+            todayTime: dateTime
           },
         },
         {
@@ -168,9 +160,7 @@ const NotesProvider = ({ children }) => {
     title,
     value,
     containerBgColor,
-    year,
-    month,
-    day,
+    dateTime,
     _id
   ) => {
     console.log(_id);
@@ -182,9 +172,7 @@ const NotesProvider = ({ children }) => {
             titleCard: title,
             valueCard: value,
             colorCard: containerBgColor,
-            todayYear: year,
-            todayMonth: month,
-            todayDay: day,
+            todayTime: dateTime
           },
         },
         {
@@ -304,10 +292,8 @@ const NotesProvider = ({ children }) => {
     }
   };
 
-  const removeTagHandler = () => {
-    
-  }
-
+  
+  
   return (
     <NotesContext.Provider
       value={{
@@ -317,7 +303,6 @@ const NotesProvider = ({ children }) => {
         addNotesToArchiveHandler,
         removeNotesToArchiveHandler,
         deleteNoteFromArchivesHandler,
-        removeTagHandler,
         notesList,
         archiveList,
       }}
