@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { HomePage } from "./routes/homePage/HomePage";
+import { HomePage } from "./routes/homepage/HomePage";
 import { LandingPage } from "./routes/landingPage/LandingPage";
-import { LoginPage } from "./routes/loginPage/LoginPage";
+import { LoginPage } from "./routes/loginpage/LoginPage";
 import { Toast } from "./toast/toast";
 import Mockman from "mockman-js";
 import "../node_modules/mockman-js/dist/style.css";

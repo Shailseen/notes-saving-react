@@ -274,7 +274,7 @@ const NotesProvider = ({ children }) => {
           isDisplay: "hidden",
         }));
       }, 2000);
-      setNotesList(response.data.notes);
+      
       setArchiveList(response.data.archives);
     } catch (error) {
       setToastVal((prevVal) => ({
