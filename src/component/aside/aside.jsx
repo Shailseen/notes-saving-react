@@ -45,14 +45,18 @@ export const Aside = () => {
             <span>Archive</span>
           </li>
         </NavLink>
-        <li className="flex">
-          <DeleteOutlineIcon sx={{ fontSize: 32 }} />
-          <span>Trash</span>
-        </li>
-        <li className="flex">
-          <AccountCircleOutlinedIcon sx={{ fontSize: 32 }} />
-          <span>Profile</span>
-        </li>
+        <NavLink className="txt-decoration-none" style={getActiveStyle} to="/">
+          <li className="flex">
+            <DeleteOutlineIcon sx={{ fontSize: 32 }} />
+            <span>Trash</span>
+          </li>
+        </NavLink>
+        <NavLink className="txt-decoration-none" style={getActiveStyle} to="/">
+          <li className="flex">
+            <AccountCircleOutlinedIcon sx={{ fontSize: 32 }} />
+            <span>Profile</span>
+          </li>
+        </NavLink>
       </ul>
     </div>
   );

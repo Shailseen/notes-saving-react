@@ -1,5 +1,0 @@
-.center-grid-container{
-    display: grid;
-    grid-template-columns: 30% 70%;
-    grid-template-areas: "aside-display notes-display";
-}

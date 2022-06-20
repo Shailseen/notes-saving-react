@@ -11,7 +11,6 @@ export const LoginPage = () => {
   const [displayPassword, setDisplayPassword] = useState("password");
   return (
       <>
-      <Navbar/>
     <section className="main-login">
       <div className="card-container-login box-shadow">
         <h2>Login</h2>

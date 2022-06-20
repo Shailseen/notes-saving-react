@@ -6,9 +6,9 @@ import { SearchBar } from "../../component/searchbar/searchbar"
 export const ArchivePage = () => {
     return (
         <>
-        <Navbar/>
+        
         <div className="center-grid-container">
-          <Aside/>
+          {/* <Aside/> */}
           <Archive/>
         </div>
         </>
