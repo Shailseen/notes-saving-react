@@ -84,6 +84,53 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const SignupHandler = async ({ firstName, lastName, email, password }) => {
+    console.log("signup");
+    try {
+      const response = await axios.post("/api/auth/signup", {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      });
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        msg: `Signup Successfully! Welcome ${response.data.createdUser.firstName} ${response.data.createdUser.lastName} !!`,
+        select: "success-alert",
+        isDisplay: "visible",
+      }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+      localStorage.setItem("token", response.data.encodedToken);
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+      error.response.status === 422
+        ? setToastVal((prevVal) => ({
+            ...prevVal,
+            msg: `Email ${email} already exist!`,
+            select: "error-alert",
+            isDisplay: "visible",
+          }))
+        : setToastVal((prevVal) => ({
+            ...prevVal,
+            msg: `Signup failed! please try again.`,
+            select: "error-alert",
+            isDisplay: "visible",
+          }));
+      setTimeout(() => {
+        setToastVal((prevVal) => ({
+          ...prevVal,
+          isDisplay: "hidden",
+        }));
+      }, 2000);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -93,6 +140,7 @@ const AuthProvider = ({ children }) => {
         changeHandler,
         formData,
         setFormData,
+        SignupHandler,
       }}
     >
       {children}

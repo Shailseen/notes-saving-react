@@ -11,6 +11,7 @@ import { LandingPage } from "./routes/landingPage/LandingPage";
 import { HomePage } from "./routes/homepage/HomePage";
 import { LoginPage } from "./routes/loginpage/LoginPage";
 import { ArchivePage } from "./routes/archivePage/ArchivePage";
+import { Signup } from "./routes/Signup/Signup";
 
 // Call make Server
 makeServer();
@@ -26,6 +27,7 @@ ReactDOM.render(
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<Signup />} />
                 <Route path="/archive" element={<ArchivePage />} />
               </Route>
             </Routes>

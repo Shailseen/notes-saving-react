@@ -9,10 +9,13 @@ body {
 }
 .card-container-login {
   width: 22rem;
+  border-radius: 4px;
+  background-color: var(--white-color);
 }
 .card-container-login h2 {
   text-align: center;
-  margin-bottom: 0rem;
+  margin-top: 1rem;
+  color: var(--primary-color);
 }
 .login-container {
   display: flex;
@@ -42,6 +45,9 @@ body {
 .login-container .solid-button {
   background-color: var(--primary-color);
   width: 100%;
+}
+.login-container .solid-button:hover {
+  opacity: 0.9;
 }
 .form-utils {
   display: flex;

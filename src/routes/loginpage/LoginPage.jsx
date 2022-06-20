@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navbar } from "../../component/navbar/navbar";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import "./loginPage.css";
 
@@ -84,9 +84,9 @@ export const LoginPage = () => {
             Login as a Guest Credential
           </button>
           <div className="create-accnt-container">
-            <a href="" className="create-accnt">
+            <Link to="/signup" className="create-accnt">
               Create New Account
-            </a>
+            </Link>
             <i className="far fa-angle-right"></i>
           </div>
         </div>

@@ -1,0 +1,45 @@
+.signup-container {
+  margin: 5rem auto;
+  padding: 1rem;
+  background-color: var(--white-color);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 4px;
+}
+.signup-container > h2 {
+  text-align: center;
+  color: var(--primary-color);
+}
+.signup-btn {
+    width: fit-content;
+    margin: 0.5rem auto;
+}
+.signup-btn > button {
+    width: 15rem;
+    font-weight: 700;
+    font-size: large;
+}
+.signup-btn > button:hover {
+    opacity: 0.9;
+}
+@media only screen and (max-width: 450px) {
+    .signup-container {
+        width: 18rem;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .signup-container {
+        width: 25rem;
+    }
+}
+.message {
+    margin-top: -1rem;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ff0000;
+
+}
+
+.input-label {
+    margin-top: 0.5rem;
+}
