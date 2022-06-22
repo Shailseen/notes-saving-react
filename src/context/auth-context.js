@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { useContext } from "react";
 import { useReducer } from "react";
 import axios from "axios";
@@ -12,6 +12,7 @@ const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const [authState, authDispatch] = useReducer(AuthReducer, { token: null });
   const { toastVal, setToastVal } = useToast();
+  const [user,setUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -31,6 +32,8 @@ const AuthProvider = ({ children }) => {
         password: formData.password,
       });
       localStorage.setItem("token", userData.data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(userData.data.foundUser));
+      setUser(userData.data.foundUser);
       authDispatch({ type: "LOG_IN", payload: userData.data.encodedToken });
       setToastVal((prevVal) => ({
         ...prevVal,
@@ -105,7 +108,9 @@ const AuthProvider = ({ children }) => {
           isDisplay: "hidden",
         }));
       }, 2000);
+      setUser(response.data.foundUser);
       localStorage.setItem("token", response.data.encodedToken);
+      localStorage.setItem("user", JSON.stringify(response.data.foundUser));
       navigate("/home");
     } catch (error) {
       console.log(error);
@@ -131,6 +136,24 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const logoutHandler =  () => {
+    console.log("clear");
+    localStorage.clear();
+    setToastVal((prevVal) => ({
+      ...prevVal,
+      msg: `Logout Successfully!`,
+      select: "success-alert",
+      isDisplay: "visible",
+    }))
+    navigate("/")
+    setTimeout(() => {
+      setToastVal((prevVal) => ({
+        ...prevVal,
+        isDisplay: "hidden",
+      }));
+    }, 2000);
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -141,6 +164,9 @@ const AuthProvider = ({ children }) => {
         formData,
         setFormData,
         SignupHandler,
+        user,
+        setUser,
+        logoutHandler
       }}
     >
       {children}

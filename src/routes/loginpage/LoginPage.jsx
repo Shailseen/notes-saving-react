@@ -76,8 +76,8 @@ export const LoginPage = () => {
             onClick={() =>
               setFormData({
                 ...formData,
-                email: "adarshbalika@gmail.com",
-                password: "adarshBalika123",
+                email: "shailesh@gmail.com",
+                password: "shailesh123",
               })
             }
           >

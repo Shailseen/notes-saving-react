@@ -44,7 +44,7 @@ export const Aside = () => {
             <span>Archive</span>
           </li>
         </NavLink>
-        <NavLink className="txt-decoration-none" style={getActiveStyle} to="/">
+        <NavLink className="txt-decoration-none" style={getActiveStyle} to="/profile">
           <li className="flex">
             <AccountCircleOutlinedIcon sx={{ fontSize: 32 }} />
             <span>Profile</span>

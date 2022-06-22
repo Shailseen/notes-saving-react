@@ -40,7 +40,7 @@ export const MobileAside = () => {
             <ArchiveIcon sx={{ fontSize: 32 }} />
           </li>
         </NavLink>
-        <NavLink className="txt-decoration-none" style={getActiveStyle} to="/">
+        <NavLink className="txt-decoration-none" style={getActiveStyle} to="/profile">
           <li className="flex">
             <PersonIcon sx={{ fontSize: 32 }} />
           </li>
