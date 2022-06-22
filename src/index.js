@@ -12,6 +12,7 @@ import { HomePage } from "./routes/homepage/HomePage";
 import { LoginPage } from "./routes/loginpage/LoginPage";
 import { ArchivePage } from "./routes/archivePage/ArchivePage";
 import { Signup } from "./routes/Signup/Signup";
+import { LabelPage } from "./routes/LabelPage/LabelPage";
 
 // Call make Server
 makeServer();
@@ -28,6 +29,7 @@ ReactDOM.render(
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/label" element={<LabelPage />} />
                 <Route path="/archive" element={<ArchivePage />} />
               </Route>
             </Routes>
