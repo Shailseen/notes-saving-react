@@ -1,7 +1,11 @@
 import "./landingPage.css";
 import poster from "../../assets/undraw_add_notes_re_ln36.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export const LandingPage = () => {
+  const navigate = useNavigate();
+  const navigateSignupPage = () => {
+    navigate("/signup");
+  };
   return (
     <div className="grid-container box-shadow">
       <div className="details-page-container">
@@ -19,7 +23,10 @@ export const LandingPage = () => {
           </p>
         </div>
         <div className="authentication-container flex-col text-align-left">
-          <button className="button-style-none solid-button disable-hover button-style">
+          <button
+            onClick={navigateSignupPage}
+            className="button-style-none solid-button disable-hover button-style"
+          >
             Join Now
           </button>
           <Link to="/login" className="login-link">

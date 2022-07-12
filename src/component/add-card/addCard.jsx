@@ -1,12 +1,10 @@
 import { useState } from "react";
 import ReactQuill from "react-quill";
-import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
-import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
 import { useNotes } from "../../context/notes-context";
 
 const AddCard = () => {
   var now = new Date();
-  var dateTime=now.toLocaleString();
+  var dateTime = now.toLocaleString();
 
   const { addNotesCardHandler } = useNotes();
 
@@ -116,7 +114,7 @@ const AddCard = () => {
         />
         <div className={`label-container`}>
           {labelTag.map((item) => (
-            <div>
+            <div key={item.tagId}>
               <input
                 onClick={(e) =>
                   e.target.checked
@@ -124,9 +122,11 @@ const AddCard = () => {
                         ...prev,
                         { ...item, isCheckd: e.target.checked },
                       ])
-                    : setTags((prev) => [
-                        prev.filter((items) => items.tagId === item.tagId),
-                      ])
+                    : setTags((prev) =>
+                        prev.filter(
+                          (items) => items.tagId !== item.tagId && items
+                        )
+                      )
                 }
                 className="cur-pointer"
                 type="checkbox"

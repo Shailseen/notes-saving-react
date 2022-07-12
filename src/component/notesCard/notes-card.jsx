@@ -8,20 +8,16 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { useNotes } from "../../context/notes-context";
 
 export const NotesCard = ({ item, isArchive }) => {
   const {
     saveNotesHandler,
-    notesList,
     deleteNotesHandler,
     addNotesToArchiveHandler,
     removeNotesToArchiveHandler,
     deleteNoteFromArchivesHandler,
-    removeTagHandler,
   } = useNotes();
-
   const {
     titleCard,
     valueCard,
@@ -72,8 +68,6 @@ export const NotesCard = ({ item, isArchive }) => {
   };
 
   function myHandler() {
-    console.log("insid emy handler");
-    console.log(value);
     saveNotesHandler(
       title,
       value,

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navbar } from "../../component/navbar/navbar";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../context/auth-context";
 import "./loginPage.css";
 
@@ -11,7 +11,6 @@ export const LoginPage = () => {
   const [displayPassword, setDisplayPassword] = useState("password");
   return (
       <>
-      <Navbar/>
     <section className="main-login">
       <div className="card-container-login box-shadow">
         <h2>Login</h2>
@@ -77,17 +76,17 @@ export const LoginPage = () => {
             onClick={() =>
               setFormData({
                 ...formData,
-                email: "adarshbalika@gmail.com",
-                password: "adarshBalika123",
+                email: "shailesh@gmail.com",
+                password: "shailesh123",
               })
             }
           >
             Login as a Guest Credential
           </button>
           <div className="create-accnt-container">
-            <a href="" className="create-accnt">
+            <Link to="/signup" className="create-accnt">
               Create New Account
-            </a>
+            </Link>
             <i className="far fa-angle-right"></i>
           </div>
         </div>

@@ -2,7 +2,6 @@ import "./aside.css";
 import LabelOutlinedIcon from "@mui/icons-material/LabelOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { NavLink } from "react-router-dom";
 
@@ -45,14 +44,12 @@ export const Aside = () => {
             <span>Archive</span>
           </li>
         </NavLink>
-        <li className="flex">
-          <DeleteOutlineIcon sx={{ fontSize: 32 }} />
-          <span>Trash</span>
-        </li>
-        <li className="flex">
-          <AccountCircleOutlinedIcon sx={{ fontSize: 32 }} />
-          <span>Profile</span>
-        </li>
+        <NavLink className="txt-decoration-none" style={getActiveStyle} to="/profile">
+          <li className="flex">
+            <AccountCircleOutlinedIcon sx={{ fontSize: 32 }} />
+            <span>Profile</span>
+          </li>
+        </NavLink>
       </ul>
     </div>
   );

@@ -1,0 +1,11 @@
+.mobile-aside-container > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem 0rem;
+}
+.mobile-aside-container {
+  margin-top: 1px;
+  background-color: var(--white-color);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}

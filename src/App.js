@@ -1,23 +1,44 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "./App.css";
-import { HomePage } from "./routes/homepage/HomePage";
-import { LandingPage } from "./routes/landingPage/LandingPage";
-import { LoginPage } from "./routes/loginpage/LoginPage";
 import { Toast } from "./toast/toast";
-import Mockman from "mockman-js";
 import "../node_modules/mockman-js/dist/style.css";
-import { ArchivePage } from "./routes/archivePage/ArchivePage";
+import { Navbar } from "./component/navbar/navbar";
+import { Aside } from "./component/aside/aside";
+import { MobileAside } from "./component/mobileAside/mobileAside";
+import { useEffect } from "react";
+import { useAuth } from "./context/auth-context";
+
 function App() {
+  const location = useLocation();
+  const {setUser} = useAuth();
+  const isAside = location.pathname !== "/" && location.pathname !== "/login" && location.pathname !== "/signup";
+  useEffect(() => {
+    console.log("hi")
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user)
+    if(user){
+      setUser(user);
+    }
+  },[])
   return (
     <div className="App">
-      <Toast/>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<HomePage/>} />
-          <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/mock" element={<Mockman />} />
-          <Route path="/archive" element={<ArchivePage/>}/>
-        </Routes>
+      <Navbar />
+      {isAside && (
+        <div className="mobile-aside">
+          <MobileAside />
+        </div>
+      )}
+      <Toast />
+      <div className={`${isAside && "center-grid-container"}`}>
+        {isAside && (
+          <div className="aside">
+            <Aside />
+          </div>
+        )}
+        <div className="outlet">
+          <Outlet />
+        </div>
+      </div>
     </div>
   );
 }
